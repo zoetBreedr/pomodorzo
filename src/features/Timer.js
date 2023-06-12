@@ -6,6 +6,7 @@ import { RoundedButton } from "../components/RoundedButton";
 import { spacing } from "../utils/sizes";
 import { colours } from "../utils/colours";
 import { Timing } from "./Timing";
+import { useKeepAwake } from "expo-keep-awake";
 
 const ONE_SECOND_IN_MS = 1000;
 
@@ -17,7 +18,8 @@ const PATTERN = [
 	1 * ONE_SECOND_IN_MS,
 ];
 
-export const Timer = ({ subject, clearSubject }) => {
+export const Timer = ({ subject, clearSubject, onTimerEnd }) => {
+	useKeepAwake();
 	const [isStarted, setIsStarted] = useState(false);
 	const [progress, setProgress] = useState(1);
 	const [minutes, setMinutes] = useState(0.1);
@@ -27,6 +29,7 @@ export const Timer = ({ subject, clearSubject }) => {
 		setIsStarted(false);
 		setProgress(1);
 		reset();
+		onTimerEnd(subject);
 	};
 
 	return (

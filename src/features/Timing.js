@@ -6,6 +6,9 @@ export const Timing = ({ onChangeTime }) => {
 	return (
 		<>
 			<View style={styles.timingButton}>
+				<RoundedButton size={75} title="5" onPress={() => onChangeTime(5)} />
+			</View>
+			<View style={styles.timingButton}>
 				<RoundedButton size={75} title="10" onPress={() => onChangeTime(10)} />
 			</View>
 			<View style={styles.timingButton}>
